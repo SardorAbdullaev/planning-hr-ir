@@ -396,8 +396,9 @@ alertmanager:
     ## Image of Alertmanager
     ##
     image:
-      repository: quay.io/prometheus/alertmanager
-      tag: v0.22.2
+      registry: quay.io
+      repository: prometheus/alertmanager
+      tag: v0.27.0
       sha: ""
 
     ## If true then the user will be responsible to provide a secret with alertmanager configuration
@@ -1343,7 +1344,6 @@ prometheus-node-exporter:
 ##
 prometheusOperator:
   enabled: true
-
   ## Prometheus-Operator v0.39.0 and later support TLS natively.
   ##
   tls:
@@ -1352,12 +1352,11 @@ prometheusOperator:
     tlsMinVersion: VersionTLS13
     # The default webhook port is 10250 in order to work out-of-the-box in GKE private clusters and avoid adding firewall rules.
     internalPort: 10250
-
   ## Admission webhook support for PrometheusRules resources added in Prometheus Operator 0.30 can be enabled to prevent incorrectly formatted
   ## rules from making their way into prometheus and potentially preventing the container from starting
   admissionWebhooks:
-    failurePolicy: Fail
-    enabled: true
+    failurePolicy: Ignore
+    enabled: false
     ## A PEM encoded CA bundle which will be used to validate the webhook's server certificate.
     ## If unspecified, system trust roots on the apiserver are used.
     caBundle: ""
@@ -1368,8 +1367,9 @@ prometheusOperator:
     patch:
       enabled: true
       image:
-        repository: jettech/kube-webhook-certgen
-        tag: v1.5.2
+        registry: registry.k8s.io
+        repository: ingress-nginx/kube-webhook-certgen
+        tag: v20221220-controller-v1.5.1-58-g787ea74b6
         sha: ""
         pullPolicy: IfNotPresent
       resources: {}
@@ -1576,10 +1576,11 @@ prometheusOperator:
   ## Prometheus-operator image
   ##
   image:
-    repository: quay.io/prometheus-operator/prometheus-operator
-    tag: v0.49.0
+    repository: prometheus-operator/prometheus-operator
+    # if not set appVersion field from Chart.yaml is used
+    tag: ""
     sha: ""
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
 
   ## Prometheus image to use for prometheuses managed by the operator
   ##
@@ -1592,8 +1593,9 @@ prometheusOperator:
   ## Prometheus-config-reloader image to use for config and rule reloading
   ##
   prometheusConfigReloaderImage:
-    repository: quay.io/prometheus-operator/prometheus-config-reloader
-    tag: v0.49.0
+    registry: quay.io
+    repository: prometheus-operator/prometheus-config-reloader
+    tag: ""
     sha: ""
 
   ## Set the prometheus config reloader side-car CPU limit
@@ -1607,8 +1609,9 @@ prometheusOperator:
   ## Thanos side-car image when configured
   ##
   thanosImage:
-    repository: quay.io/thanos/thanos
-    tag: v0.17.2
+    registry: quay.io
+    repository: thanos/thanos
+    tag: v0.35.0
     sha: ""
 
   ## Set a Field Selector to filter watched secrets
@@ -1960,8 +1963,9 @@ prometheus:
     ## Image of Prometheus.
     ##
     image:
-      repository: quay.io/prometheus/prometheus
-      tag: v2.28.1
+      registry: quay.io
+      repository: prometheus/prometheus
+      tag: v2.52.0
       sha: ""
 
     ## Tolerations for use with node taints

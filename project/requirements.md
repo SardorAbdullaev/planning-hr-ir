@@ -7,7 +7,7 @@
 - An application load balancer in each region (ALB)
 
 ## SQL Requirements
-In regards to their SQL cluster, the following requirements should be met:
+In regard to their SQL cluster, the following requirements should be met:
 - Create 2 instance nodes for each cluster (primary and secondary clusters)
 - Set the backup retention window to 5 days
 - Each cluster must have multiple availability zones
