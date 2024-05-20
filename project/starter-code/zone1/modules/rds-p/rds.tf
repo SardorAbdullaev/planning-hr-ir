@@ -6,8 +6,7 @@
 #   username             = "udacity"
 #   password             = "MyUdacityPassword"
 #   parameter_group_name = "default.mysql5.7"
-#   multi-az             = true
-#   skip_final_snapshot  = true
+#   skip_final_snapshot  = false
 # }
 
 

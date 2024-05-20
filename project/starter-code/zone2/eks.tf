@@ -4,6 +4,14 @@ provider "kubernetes" {
    cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
    token                  = data.aws_eks_cluster_auth.cluster.token
  }
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    name = "monitoring"
+  }
+  depends_on = [
+    module.project_eks
+  ]
+}
 
  data "aws_eks_cluster" "cluster" {
    name = module.project_eks.cluster_id
