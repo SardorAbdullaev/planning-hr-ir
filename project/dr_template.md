@@ -15,7 +15,7 @@ zone1 "us-east-2a", "us-east-2b", "us-east-2c" <br>
 | RDS instance                    | Database for the application                                 | db.t2.small | 2 instance                                nodes                 | replicated                                                                                                   |
 | S3 bucket                       | For storing Database backups                                 | N/A | 1                                                               | Stored in zone1                                                                                              |
 | ALB                             | Load balancer for the webserver instances                    | N/A | 1 instance per region                                           | Multiple ALBs in each region                                                                                 |
-| EKS cluster                     | Monitoring with grafana and argo                            | t3.medium | 2 nodes in each zone                                            | Multiple EKS clusters in each region                                                                         |
+| EKS cluster                     | Monitoring with grafana and argo                            | t3.medium | 2 nodes in each region                                          | Multiple EKS clusters in each region                                                                         |
 
 ### Descriptions
 More detailed descriptions of each asset identified above.
